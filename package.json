@@ -1,0 +1,19 @@
+{
+  "name": "team_manager_fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bzukowski883/team_manager_fe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bzukowski883/team_manager_fe/issues"
+  },
+  "homepage": "https://github.com/bzukowski883/team_manager_fe#readme"
+}
