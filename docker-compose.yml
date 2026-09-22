@@ -1,0 +1,20 @@
+name: tm_fe
+
+services:
+  react:
+    build:
+      context: ./
+    container_name: react
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/app
+      - node_modules_tm_react:/usr/src/app/node_modules
+    networks:
+      - team_manager_net
+
+networks:
+  team_manager_net:
+    external: true
+
+volumes:
+  node_modules_tm_react:
