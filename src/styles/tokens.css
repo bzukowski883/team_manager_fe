@@ -1,0 +1,41 @@
+:root {
+  /* Colors */
+  --color-bg: #2e2e2e; /* page background */
+  --color-surface:	#121213;	/* cards, table, sidebar */
+  --color-border:	#707274;	/* hairlines, dividers */
+  --color-text:	#dadcdf;	/* primary text */
+  --color-text-muted:	#878d92;	/* secondary text, labels */
+  --color-primary:	#275de6	active; /* nav item, links, primary button */
+  --color-primary-hover:	#4177ff;	/* hover/focus state of primary */
+  --color-success:	#34b94a;	/* positive KPI delta, healthy status pill */
+  --color-warning:	#dd9b38;	/* at-risk status pill */
+  --color-danger: #da5353;	/* negative KPI delta, critical status pill */
+
+  /* Spacing Scale */
+  --space-1:	4px;
+  --space-2:	8px;
+  --space-3:	12px;
+  --space-4:	16px;
+  --space-5:	24px;
+  --space-6:	32px;
+  --space-7:	48px;
+  --space-8:	64px;
+
+  --header-content-margin: 0px;
+  --header-content-gap: 10px;
+  --header-navbar-content-gap: 10px;
+  --sidebar-content-margin: 5px;
+
+  --nav-button-size: 24px;
+
+  /* Type scale & radius */
+  --font-body:    'Inter', system-ui, sans-serif; /* all body/UI text */
+  --font-display: 'Sora', system-ui, sans-serif;  /* page title, KPI numbers */
+  --text-xs:  12px;   /* table meta, timestamps */
+  --text-sm:  14px;   /* body, nav labels */
+  --text-base:    16px;   /* default paragraph */
+  --text-lg:  20px;   /* section headings */
+  --text-xl:  28px;   /* KPI figures */
+  --radius-sm:    6px; /* buttons/pills / cards */
+  --radius-md:    12px;
+}
