@@ -1,0 +1,124 @@
+.header {
+  display: flex;
+  width: 100%;
+  gap: var(--header-content-gap);
+
+  background-color: var(--color-surface);
+  color: var(--color-text)
+}
+
+.header-sidebar-button {
+  margin: var(--header-content-margin);
+  align-content: center;
+}
+.header-sidebar-button button {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+}
+.header-sidebar-button button:hover  {
+  border-color: var(--color-border);
+}
+
+.header-nav-bar {
+  display: flex;
+  width: 100%;
+}
+.header-account-display {
+  margin: var(--header-content-margin);
+  align-content: center;
+
+}
+.header-account-display img {
+  /* object-fit: contain; */
+  align-self: center;
+
+  max-height: 50px;
+  max-width: 50px;
+}
+.header-account-display button {
+  background-color: transparent;
+  border-color: transparent;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border-width: 2px;
+  border-style: solid;
+}
+.header-account-display button:hover {
+  border-color: var(--color-border);
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+
+  align-content: center;
+  align-items: center;
+  
+  gap: var(--header-content-gap);
+  
+  margin: var(--header-content-margin);
+}
+.header-middle {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: center;
+  align-items: flex-end;
+  
+  gap: var(--header-navbar-content-gap);
+
+  margin: var(--header-content-margin);
+}
+
+.header-middle button {
+  font-size: var(--nav-button-size);
+  
+  border-radius: 0px;
+  border-width: 0px;
+  border-bottom-width: 2px;
+  border-style: solid;
+  
+  border-color: transparent;
+}
+.header-middle button:hover {
+  border-color: var(--color-border);
+}
+.header-nav-button {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+.header-nav-button-active{
+  background-color: var(--color-bg);
+  color: var(--color-primary-hover);
+}
+
+.header-right {
+  margin: var(--header-content-margin);
+  align-content: center;
+  text-align: right;
+  
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  align-content: flex-start;
+
+  height: 100%;
+
+  padding-right: var(--sidebar-content-margin);
+  padding-left: var(--sidebar-content-margin);
+
+  background-color: var(--color-surface);
+  color: var(--color-text)
+}
+.sidebar img {
+  align-self: center;
+}
