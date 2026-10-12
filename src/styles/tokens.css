@@ -5,7 +5,8 @@
   --color-border:	#707274;	/* hairlines, dividers */
   --color-text:	#dadcdf;	/* primary text */
   --color-text-muted:	#878d92;	/* secondary text, labels */
-  --color-primary:	#275de6	active; /* nav item, links, primary button */
+  --color-primary:	#275de6; /* nav item, links, primary button */
+  --color-primary-active:	#204fc7; /*	active; /* nav item, links, primary button */
   --color-primary-hover:	#4177ff;	/* hover/focus state of primary */
   --color-success:	#34b94a;	/* positive KPI delta, healthy status pill */
   --color-warning:	#dd9b38;	/* at-risk status pill */

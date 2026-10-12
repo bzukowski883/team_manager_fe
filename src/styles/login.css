@@ -10,12 +10,15 @@
   display: flex;
   flex-direction: column;
   
-  background-color: var(--color-surface);
+  border-radius: 20px;
 
-  padding: 5px;
-
-  width: 150px;
+  gap: 5px;
+  padding: 20px;
+  
+  width: 300px;
   height: 200px;
+  
+  background-color: var(--color-surface);
 }
 .logo {
   display: flex;
@@ -28,7 +31,43 @@
 }
 .login-box input {
   background-color: transparent;
+
+  padding: 10px;
   
-  border: 10px;
+  border-style: solid;
+  border-width: 2px;
   border-radius: 10px;
+  
+  border-color: var(--color-border);
+
+  color: var(--color-text);
+}
+.login-box button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+
+  border-radius: 50px;
+  border-width: 0;
+}
+.login-box button:hover {
+  background-color: var(--color-primary-hover);
+}
+.login-box button:active {
+  background-color: var(--color-primary-active);
+}
+
+.sign-up {
+  color: var(--color-text-muted);
+}
+.sign-up button {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+.sign-up button:hover {
+  background-color: transparent;
+  color: var(--color-primary-hover);
+}
+.sign-up button:active {
+  background-color: transparent;
+  color: var(--color-primary-active);
 }

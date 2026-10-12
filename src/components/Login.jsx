@@ -22,6 +22,8 @@ export default function Login() {
         <input id="password-input" type="password" placeholder="Enter password"></input>
 
         <button>Submit</button>
+
+        <text className="sign-up">Dont have an account? <button>Sign up here!</button></text>
       </div>
 
     </div>
