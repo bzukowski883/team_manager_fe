@@ -20,6 +20,12 @@
   
   background-color: var(--color-surface);
 }
+
+.unstyled-link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .logo {
   display: flex;
   align-items: center;

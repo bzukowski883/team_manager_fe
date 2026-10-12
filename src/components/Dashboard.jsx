@@ -11,32 +11,36 @@ import Messages from "./../components/Messages";
 
 export default function Dashboard({
     UserLoggedIn, // bool
+    currentScreen, 
 }) {
-    const [currentScreen, setCurrentScreen] = useState("Calendar");
+    // const [currentScreen, setCurrentScreen] = useState("Calendar");
     const [IcludeSidebarButton, setIcludeSidebarButton] = useState(false)
 
     return (
         <div className="page-shell">
-        <header className="page-header"><Header currentScreen={currentScreen} setCurrentScreen={setCurrentScreen} IcludeSidebarButton={IcludeSidebarButton ? "true" : ""}/></header>
         <main className="page-main-body">
             {
                 {
                 Calendar: 
                     <>
-                    <Calendar setIcludeSidebarButton={setIcludeSidebarButton}/>,
-                    {() => setIcludeSidebarButton(true)}
+                    <Calendar/>,
+                    {() => setIcludeSidebarButton( true )}
+                    
                     </>,
                 Messages: 
                     <>
                     <Messages/>
+                    {() => setIcludeSidebarButton(true)}
                     </>,
-                "Jira Board": 
+                JiraBoard: 
                     <div className="main-window">
-                    <SomethingWentWrong errorTitle="This page has not been finished" errorMessage="The Jira Board page is still being worked on :/"/>
+                        {() => setIcludeSidebarButton(false)}
+                        <SomethingWentWrong errorTitle="This page has not been finished" errorMessage="The Jira Board page is still being worked on :/"/>
                     </div>,
                 }[currentScreen] || <SomethingWentWrong/>
             }
         </main>
+        <header className="page-header"><Header currentScreen={currentScreen} IcludeSidebarButton={IcludeSidebarButton}/></header>
     </div>
     )
 }

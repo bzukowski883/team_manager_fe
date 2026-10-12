@@ -6,8 +6,7 @@ import SomethingWentWrong from "./Error"
 import Sidebar from "./Sidebar";
 
 
-function Calendar({setIcludeSidebarButton = true}) {
-  setIcludeSidebarButton( true )
+function Calendar() {
   
   return (
     <div className="main-window">

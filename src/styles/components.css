@@ -122,3 +122,8 @@
 .sidebar img {
   align-self: center;
 }
+
+.unstyled-link {
+  color: inherit;
+  text-decoration: inherit;
+}
