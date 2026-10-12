@@ -15,3 +15,6 @@ npm run dev
 ```
 npm run dev -- --host
 ```
+
+# Packages
+``react-router-dom`` - allows the use of the url with only one page

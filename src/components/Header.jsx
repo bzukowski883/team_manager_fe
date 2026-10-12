@@ -2,6 +2,7 @@ import "../styles/tokens.css"
 import "../styles/components.css"
 
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 function Header({
   UserLoggedIn, // bool
@@ -42,9 +43,9 @@ function Header({
         <div className="header-right"></div>
       </div>
       <div className="header-account-display">
-        <button>
+        <Link to="/sign-in">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/960px-Windows_10_Default_Profile_Picture.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20221210150350" alt="Profile Picture"/>
-        </button>
+        </Link>
       </div>
     </div>
   )
