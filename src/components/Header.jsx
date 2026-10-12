@@ -3,7 +3,12 @@ import "../styles/components.css"
 
 import { useState } from 'react';
 
-function Header({currentScreen, setCurrentScreen, IcludeSidebarButton = true}) {
+function Header({
+  UserLoggedIn, // bool
+  IcludeSidebarButton = false, 
+  IncludeNavBar = true,
+  currentScreen, setCurrentScreen, // for the screen navigation bar
+}) {
   const navPages = ["Calendar", "Messages", "Jira Board"]
 
   return (
@@ -22,11 +27,17 @@ function Header({currentScreen, setCurrentScreen, IcludeSidebarButton = true}) {
           <h1>Team Manager</h1>
         </div>
         <div className="header-middle">
-          {navPages.map((navPage, index) => (
-            <button className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"} onClick={() => {setCurrentScreen(navPage);}}>
-              {navPage}
-            </button>
-          ))}
+          {IncludeNavBar ?
+          // shows nav buttons
+            navPages.map((navPage, index) => (
+              <button className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"} onClick={() => {setCurrentScreen(navPage);}}>
+                {navPage}
+              </button>
+            ))
+            :
+          // hides nav buttons
+            <></>
+          }
         </div>
         <div className="header-right"></div>
       </div>
