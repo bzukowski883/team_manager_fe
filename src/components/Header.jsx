@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import "../styles/tokens.css"
 import "../styles/components.css"
 
-import { useState } from 'react';
-import { Link } from "react-router-dom";
 
 function Header({
   UserLoggedIn, // bool
@@ -33,11 +34,11 @@ function Header({
           {IncludeNavBar ?
           // shows nav buttons
             navPages.map((navPage, index) => (
-              <button className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"}>
-                <Link to={"./../" + navPage} className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"} >
+              <Link className="unstyled-link" to={"./../" + navPage}>
+                <button className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"}>
                   {navPage}
-                </Link>
-              </button>
+                </button>
+              </Link>
             ))
             :
           // hides nav buttons
