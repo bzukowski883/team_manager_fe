@@ -22,7 +22,7 @@ function App() {
         <Route path='JiraBoard' element={<Dashboard currentScreen={"JiraBoard"}/>}/>
         <Route path="/sign-in" element={<Login/>}/>
         <Route path="/sign-up" element={<Signup/>}/>
-        <Route path="*" element={<SomethingWentWrong errorCode={404} errorMessage='Unknown URL' />}/>
+        <Route path="*" element={(<div className='page-not-found'><SomethingWentWrong errorCode={404} errorMessage='Unknown URL' /></div>)}/>
       </Routes>
     </BrowserRouter>
   )
