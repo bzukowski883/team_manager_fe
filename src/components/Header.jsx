@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/tokens.css"
 import "../styles/components.css"
+import "../styles/header.css"
 
 
 function Header({

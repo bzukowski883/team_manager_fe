@@ -7,25 +7,12 @@
   height: 100%;
 }
 .login-box {
-  display: flex;
-  flex-direction: column;
-  
-  border-radius: var(--corner-radius-lg);
-
-  gap: var(--container-gap-base);
-  padding: var(--container-padding-lg);
-  
   width: 500px;
   height: 250px;
-  
-  font-size: var(--text-base);
-
-  background-color: var(--color-surface);
 }
-
-.unstyled-link {
-  color: inherit;
-  text-decoration: inherit;
+.signup-box {
+  width: 500px;
+  height: 400px;
 }
 
 .logo {

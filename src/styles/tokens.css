@@ -6,11 +6,14 @@
   --color-text:	#dadcdf;	/* primary text */
   --color-text-muted:	#878d92;	/* secondary text, labels */
   --color-primary:	#275de6; /* nav item, links, primary button */
-  --color-primary-active:	#204fc7; /*	active; /* nav item, links, primary button */
+  --color-primary-active:	#204fc7; /* */
   --color-primary-hover:	#4177ff;	/* hover/focus state of primary */
-  --color-success:	#34b94a;	/* positive KPI delta, healthy status pill */
-  --color-warning:	#dd9b38;	/* at-risk status pill */
-  --color-danger: #da5353;	/* negative KPI delta, critical status pill */
+  --color-secondary: #823be6; /* Clicked links and secondary buttons*/
+  --color-secondary-active: #7433cf; /* */
+  --color-secondary-hover: #ac71ff; /* hover/focus state of secondary */
+  --color-success:	#34b94a;	/* */
+  --color-warning:	#dd9b38;	/**/
+  --color-danger: #da5353;	/**/
 
   /* Spacing Scale */
   --space-1:	4px;
