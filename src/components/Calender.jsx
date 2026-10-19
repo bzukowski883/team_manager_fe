@@ -1,14 +1,24 @@
 import "../styles/tokens.css"
 import "../styles/mainComponent.css"
 import "../styles/components.css"
-
+import { getExampleZero } from "../services/calendarservices.js"
 import SomethingWentWrong from "./Error"
 import Sidebar from "./Sidebar";
-
+import { useState, useEffect } from "react"
 
 function Calendar({setIcludeSidebarButton = true}) {
-  setIcludeSidebarButton( true )
   
+  const [buttonText, setButtonText] = useState("Do something with the server!");
+
+  useEffect(() => {
+    setIcludeSidebarButton(true);
+  }, [setIcludeSidebarButton]);
+
+  async function handleClick() {
+    const res = await getExampleZero();
+    setButtonText(res);
+  }
+
   return (
     <div className="main-window">
       <Sidebar>
@@ -24,9 +34,9 @@ function Calendar({setIcludeSidebarButton = true}) {
         <div>setting 4</div>
         <div>etc...</div>
       </Sidebar>
-      <SomethingWentWrong errorTitle="This will be the Calendar Page" errorMessage="Imagin dates and stuff here with some events and things"/>
+      <button onClick={handleClick}>{buttonText}</button>
+      <SomethingWentWrong errorTitle="This will be the Calendar Page" errorMessage="Imagin dates and stuff here with some events and things and more text here"/>
     </div>
   )
 }
-
 export default Calendar;
