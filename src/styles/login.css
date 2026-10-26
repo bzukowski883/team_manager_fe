@@ -1,0 +1,75 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+
+  height: 100%;
+}
+.login-box {
+  width: 500px;
+  height: 250px;
+}
+.signup-box {
+  width: 500px;
+  height: 400px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--text-xl);
+
+  color: var(--color-text)
+}
+
+.login-box input {
+  background-color: transparent;
+
+  padding: var(--container-padding-base);
+  
+  border-style: solid;
+  border-width: var(--border-width-sm);
+  border-radius: var(--corner-radius-md);
+  
+  border-color: var(--color-border);
+
+  color: var(--color-text);
+
+  font-size: var(--text-base);
+}
+.submit-button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+
+  font-size: var(--text-base);
+
+  padding: var(--container-padding-sm);
+
+  border-radius: 500px;
+  border-width: 0;
+}
+.submit-button:hover {
+  background-color: var(--color-primary-hover);
+}
+.submit-button:active {
+  background-color: var(--color-primary-active);
+}
+
+.sign-up {
+  color: var(--color-text-muted);
+}
+.submit-button {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+.submit-button:hover {
+  background-color: transparent;
+  color: var(--color-primary-hover);
+}
+.submit-button:active {
+  background-color: transparent;
+  color: var(--color-primary-active);
+}
