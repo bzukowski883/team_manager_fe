@@ -40,7 +40,7 @@
 
   font-size: var(--text-base);
 }
-.login-box button {
+.submit-button {
   background-color: var(--color-primary);
   color: var(--color-text);
 
@@ -51,25 +51,25 @@
   border-radius: 500px;
   border-width: 0;
 }
-.login-box button:hover {
+.submit-button:hover {
   background-color: var(--color-primary-hover);
 }
-.login-box button:active {
+.submit-button:active {
   background-color: var(--color-primary-active);
 }
 
 .sign-up {
   color: var(--color-text-muted);
 }
-.sign-up button {
+.submit-button {
   background-color: transparent;
   color: var(--color-primary);
 }
-.sign-up button:hover {
+.submit-button:hover {
   background-color: transparent;
   color: var(--color-primary-hover);
 }
-.sign-up button:active {
+.submit-button:active {
   background-color: transparent;
   color: var(--color-primary-active);
 }
