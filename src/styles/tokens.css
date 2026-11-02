@@ -5,11 +5,15 @@
   --color-border:	#707274;	/* hairlines, dividers */
   --color-text:	#dadcdf;	/* primary text */
   --color-text-muted:	#878d92;	/* secondary text, labels */
-  --color-primary:	#275de6	active; /* nav item, links, primary button */
+  --color-primary:	#275de6; /* nav item, links, primary button */
+  --color-primary-active:	#204fc7; /* */
   --color-primary-hover:	#4177ff;	/* hover/focus state of primary */
-  --color-success:	#34b94a;	/* positive KPI delta, healthy status pill */
-  --color-warning:	#dd9b38;	/* at-risk status pill */
-  --color-danger: #da5353;	/* negative KPI delta, critical status pill */
+  --color-secondary: #823be6; /* Clicked links and secondary buttons*/
+  --color-secondary-active: #7433cf; /* */
+  --color-secondary-hover: #ac71ff; /* hover/focus state of secondary */
+  --color-success:	#34b94a;	/* */
+  --color-warning:	#dd9b38;	/**/
+  --color-danger: #da5353;	/**/
 
   /* Spacing Scale */
   --space-1:	4px;
@@ -29,13 +33,32 @@
   --nav-button-size: 24px;
 
   /* Type scale & radius */
-  --font-body:    'Inter', system-ui, sans-serif; /* all body/UI text */
-  --font-display: 'Sora', system-ui, sans-serif;  /* page title, KPI numbers */
-  --text-xs:  12px;   /* table meta, timestamps */
-  --text-sm:  14px;   /* body, nav labels */
-  --text-base:    16px;   /* default paragraph */
-  --text-lg:  20px;   /* section headings */
-  --text-xl:  28px;   /* KPI figures */
-  --radius-sm:    6px; /* buttons/pills / cards */
-  --radius-md:    12px;
+  --font-body:      'Inter', system-ui, sans-serif; /* all body/UI text */
+  --font-display:   'Sora', system-ui, sans-serif;  /* page title, KPI numbers */
+  --text-xs:        12px;   
+  --text-sm:        14px;   
+  --text-base:      16px;   
+  --text-md:        20px;   
+  --text-lg:        22px;   
+  --text-xl:        28px;   
+  --text-subtitle:  36px;
+  --text-title:     40px;
+
+  --corner-radius-sm:   6px;
+  --corner-radius-md:   12px;
+  --corner-radius-lg:   20px;
+
+  --border-width-xs:    1px;
+  --border-width-sm:    2px;
+  --border-width-base:  3px;
+  --border-width-md:  4px;
+
+  --container-padding-sm:   5px;
+  --container-padding-base: 10px;
+  --container-padding-lg:   20px;
+  --container-gap-sm:   2px;
+  --container-gap-base: 5px;
+  --container-gap-lg:   8px;
+  
+
 }

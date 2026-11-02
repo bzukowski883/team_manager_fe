@@ -1,0 +1,24 @@
+/* sidebar.css */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  align-content: flex-start;
+
+  height: 100%;
+
+  padding-right: var(--sidebar-content-margin);
+  padding-left: var(--sidebar-content-margin);
+
+  background-color: var(--color-surface);
+  color: var(--color-text)
+}
+.sidebar img {
+  align-self: center;
+}
+
+.unstyled-link {
+  color: inherit;
+  text-decoration: inherit;
+}

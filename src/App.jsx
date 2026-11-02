@@ -1,41 +1,30 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/tokens.css"
 import "./styles/layout.css"
 import "./styles/mainComponent.css"
 
-import Header from './components/Header';
-import SomethingWentWrong from "./components/Error";
-import Calendar from "./components/Calender";
-import Messages from "./components/Messages";
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import Signup from './components/signup';
+import SomethingWentWrong from './components/Error';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState("Calendar");
-  const [IcludeSidebarButton, setIcludeSidebarButton] = useState(false)
+  const [UserLoggedIn, setUserLoggedIn] = useState(false)
 
   return (
-    <div className="page-shell">
-      <header className="page-header"><Header currentScreen={currentScreen} setCurrentScreen={setCurrentScreen} IcludeSidebarButton={IcludeSidebarButton ? "true" : ""}/></header>
-      <main className="page-main-body">
-          {
-            {
-              Calendar: 
-                <>
-                  <Calendar setIcludeSidebarButton={setIcludeSidebarButton}/>,
-                  {() => setIcludeSidebarButton(true)}
-                </>,
-              Messages: 
-                <>
-                  <Messages/>
-                </>,
-              "Jira Board": 
-                <div className="main-window">
-                  <SomethingWentWrong errorTitle="This page has not been finished" errorMessage="The Jira Board page is still being worked on :/"/>
-                </div>,
-            }[currentScreen] || <SomethingWentWrong/>
-          }
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard currentScreen={"Calendar"}/>}/>
+        <Route path='Calendar' element={<Dashboard currentScreen={"Calendar"}/>}/>
+        <Route path='Messages' element={<Dashboard currentScreen={"Messages"}/>}/>
+        <Route path='JiraBoard' element={<Dashboard currentScreen={"JiraBoard"}/>}/>
+        <Route path="/sign-in" element={<Login/>}/>
+        <Route path="/sign-up" element={<Signup/>}/>
+        <Route path="*" element={(<div className='page-not-found'><SomethingWentWrong errorCode={404} errorMessage='Unknown URL' /></div>)}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

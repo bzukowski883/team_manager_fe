@@ -26,3 +26,8 @@
 .page-sidebar {
   grid-area: sidebar;
 }
+
+.page-not-found {
+  margin: 15px;
+  color: var(--color-text);
+}

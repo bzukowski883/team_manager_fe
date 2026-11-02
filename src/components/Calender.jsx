@@ -2,17 +2,13 @@ import "../styles/tokens.css"
 import "../styles/mainComponent.css"
 import "../styles/components.css"
 import { getExampleZero } from "../services/calendarservices.js"
+import { useState } from "react"
 import SomethingWentWrong from "./Error"
 import Sidebar from "./Sidebar";
-import { useState, useEffect } from "react"
 
-function Calendar({setIcludeSidebarButton = true}) {
+function Calendar() {
   
   const [buttonText, setButtonText] = useState("Do something with the server!");
-
-  useEffect(() => {
-    setIcludeSidebarButton(true);
-  }, [setIcludeSidebarButton]);
 
   async function handleClick() {
     const res = await getExampleZero();
