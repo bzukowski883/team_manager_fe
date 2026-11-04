@@ -1,7 +1,8 @@
 :root {
   /* Colors */
   --color-bg: #2e2e2e; /* page background */
-  --color-surface:	#121213;	/* cards, table, sidebar */
+  --color-surface: #121213; /* sidebar, headerbar */
+  --color-surface-2:	#17171e;	/* cards, table */
   --color-border:	#707274;	/* hairlines, dividers */
   --color-text:	#dadcdf;	/* primary text */
   --color-text-muted:	#878d92;	/* secondary text, labels */
@@ -14,6 +15,10 @@
   --color-success:	#34b94a;	/* */
   --color-warning:	#dd9b38;	/**/
   --color-danger: #da5353;	/**/
+
+  --color-red: #a02222;
+  --color-blue: #2f52b0;
+  --color-green: #227b28;
 
   /* Spacing Scale */
   --space-1:	4px;

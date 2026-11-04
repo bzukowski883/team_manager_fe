@@ -1,0 +1,42 @@
+.display-event-column {
+  display: flex;
+  flex-direction: column;
+
+  /* width: 200px; */
+  /* width: 100px; */
+  height: 100%;
+}
+
+.display-event {
+  display: grid;
+  
+  grid-template-areas: 
+  "title title"
+  "descr descr"
+  "startTime endTime ";
+
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: 60px 100px 60px; */
+
+  gap: var(--container-gap-sm);
+  padding: var(--container-padding-sm);
+
+  background-color: var(--color-surface-2);
+  border-radius: var(--corner-radius-md);
+}
+.calendar-item-title {
+  grid-area: title;
+  font-size: var(--text-md);
+  
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.calendar-item-description {
+  grid-area: descr;
+  font-size: var(--text-default);
+  
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
