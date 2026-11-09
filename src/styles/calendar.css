@@ -1,13 +1,62 @@
+.calendar-display-wiget {
+  display: grid;
+  /* flex-direction: column; */
+
+  grid-template-areas: 
+  "null dayLabels"
+  "hourLabels table";
+
+  --line-color: var(--color-border);
+  --column-size: 100px;
+  --hour-size: 50px;
+
+  grid-template-rows: 50px;
+  grid-template-columns: 50px;
+
+  height: 100%;
+}
+.calendar-display-day-labels {
+  grid-area: dayLabels;
+}
+
+.calendar-display-hour-labels {
+  grid-area: hourLabels;
+}
+
+.calendar-display-columns {
+  display: flex;
+  flex-direction: row;
+
+  grid-area: table;
+
+  height: 100%;
+
+  overflow-y: scroll;
+
+  background-image:
+    linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+  background-size: var(--column-size) var(--hour-size);
+  background-attachment: local;
+}
+
 .display-event-column {
   display: flex;
   flex-direction: column;
+  position: relative;
 
-  /* width: 200px; */
-  /* width: 100px; */
+  width: var(--column-size);
   height: 100%;
+}
+.display-column-day-title {
+  position:fixed;
+  z-index: 2;
+  /* top: 0px; */
 }
 
 .display-event {
+  position: absolute;
+
   display: grid;
   
   grid-template-areas: 
@@ -16,7 +65,6 @@
   "startTime endTime ";
 
   grid-template-columns: 50% 50%;
-  /* grid-template-rows: 60px 100px 60px; */
 
   gap: var(--container-gap-sm);
   padding: var(--container-padding-sm);
@@ -40,3 +88,4 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+

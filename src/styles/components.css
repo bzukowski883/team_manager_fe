@@ -37,3 +37,12 @@
 .link:visited:hover {
   color: var(--color-secondary-hover);
 }
+
+.text-subtitle {
+  color: var(--color-text-muted);
+  
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+
+  padding: var(--container-padding-sm);
+}
