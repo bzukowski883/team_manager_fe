@@ -16,9 +16,18 @@
   --color-warning:	#dd9b38;	/**/
   --color-danger: #da5353;	/**/
 
+  --color-gray: #555569;
   --color-red: #a02222;
   --color-blue: #2f52b0;
-  --color-green: #227b28;
+  --color-green: #105514;
+  --color-purple: #5a0d72;
+  --color-yellow: #958407;
+  --color-orange: #a94b03;
+  --color-lightgreen: #089211;
+  --color-lavender: #9254a7;
+  --color-brown: #623504;
+  --color-pink: #952c82;
+  
 
   /* Spacing Scale */
   --space-1:	4px;

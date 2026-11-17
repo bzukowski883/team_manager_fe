@@ -2,21 +2,24 @@ import "../styles/tokens.css"
 import "../styles/mainComponent.css"
 import "../styles/components.css"
 import "../styles/calendar.css"
-import { getExampleZero } from "../services/calendarservices.js"
-import { useState } from "react"
+import { getExampleZero, GetCalendarEventsOnDay} from "../services/calendarservices.js"
+import { useEffect, useState } from "react"
 import SomethingWentWrong from "./Error"
 import Sidebar from "./Sidebar";
 
 export default function Calendar() {
-  
   const [buttonText, setButtonText] = useState("Do something with the server!");
 
   async function handleClick() {
     const res = await getExampleZero();
     setButtonText(res);
   }
-  const hour_scale_in_px = 50;
-  const column_size = 300
+
+  // the vertical zoom value / how far apart are each hour on each column 
+  const HOUR_SCALE_IN_PX = 50;
+  const NUM_OF_COLUMNS = 7;
+
+  const [curDateTime, setCurDateTime] = useState(new Date());
 
   return (
     <div className="main-window">
@@ -33,65 +36,145 @@ export default function Calendar() {
         <div>setting 4</div>
         <div>etc...</div>
       </Sidebar>
-      {/* note: this is currently being filled out manually for demonstration purposes.
-      this will eventually be layed out automatically and then events will be populated automatically */}
-      <CalendarDisplayColumns style={{ "--column-size": `${column_size}px`, "--hour-size":`${hour_scale_in_px}px` }}>
-        <DisplayEventColumn day_name="Tuesday">
-          <DisplayEvent 
-            title="Lorem Ipsum" 
-            description="Consectetur adipiscing elit. Quos optio dolore nostrud nihil in. Fuga accusamus at ad dignissimos eligendi minus quo consectetur deserunt. Nam occaecat do sit ullamco laborum in odio. Est quo nulla minim nulla occaecat et." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={2}
-            length_time={2}
-            displayColor="var(--color-green)"/>
-          <DisplayEvent 
-            title="Assumenda quo et" 
-            description="Velit et odio fugiat excepteur vero in temporibus distinctio maxime autem consectetur. Excepteur mollit dolore quidem cupidatat laboris et et fuga et est." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={10}
-            length_time={2}
-            displayColor="var(--color-blue)"/>
-        </DisplayEventColumn>
-        <DisplayEventColumn day_name="Wednesday">
-          <DisplayEvent 
-            title="Lorem Ipsum" 
-            description="Consectetur adipiscing elit. Quos optio dolore nostrud nihil in. Fuga accusamus at ad dignissimos eligendi minus quo consectetur deserunt. Nam occaecat do sit ullamco laborum in odio. Est quo nulla minim nulla occaecat et." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={4}
-            length_time={4}
-            displayColor="var(--color-green)"/>
-          <DisplayEvent 
-            title="Assumenda quo et" 
-            description="Velit et odio fugiat excepteur vero in temporibus distinctio maxime autem consectetur. Excepteur mollit dolore quidem cupidatat laboris et et fuga et est." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={1}
-            length_time={2.1}
-            displayColor="var(--color-blue)"/>
-        </DisplayEventColumn>
-        <DisplayEventColumn day_name="Thursday">
-          <DisplayEvent 
-            title="Lorem Ipsum" 
-            description="Consectetur adipiscing elit. Quos optio dolore nostrud nihil in. Fuga accusamus at ad dignissimos eligendi minus quo consectetur deserunt. Nam occaecat do sit ullamco laborum in odio. Est quo nulla minim nulla occaecat et." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={6}
-            length_time={2}
-            displayColor="var(--color-red)"/>
-          <DisplayEvent 
-            title="Assumenda quo et" 
-            description="Velit et odio fugiat excepteur vero in temporibus distinctio maxime autem consectetur. Excepteur mollit dolore quidem cupidatat laboris et et fuga et est." 
-            display_hour_scale={hour_scale_in_px}
-            start_time={20}
-            length_time={2}
-            displayColor="var(--color-blue)"/>
-        </DisplayEventColumn >
-      </CalendarDisplayColumns>
+      <CalendarWeekDisplay curDateTime={curDateTime} numOfColumns={NUM_OF_COLUMNS} HOUR_SCALE_IN_PX={HOUR_SCALE_IN_PX}/>
       {/* <button onClick={handleClick}>{buttonText}</button> */}
-      {/* <SomethingWentWrong errorTitle="This will be the Calendar Page" errorMessage="Imagin dates and stuff here with some events and things and more text here"/> */}
     </div>
   )
 }
 
-function CalendarDisplayColumns({ 
+function CalendarWeekDisplay({
+  curDateTime = new Date(), 
+  numOfColumns = 7,
+  HOUR_SCALE_IN_PX,
+}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [columnEvents, setColumnEvents] = useState([]); 
+
+  const columnSize = ( 1 / numOfColumns ) * 100;
+
+  let monthDay = curDateTime.getDate()
+  let weekDay = curDateTime.getDay()
+  let longDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+  let curDay = new Date();
+  curDay = new Date(
+    curDay.getFullYear(),
+    curDay.getMonth(),
+    curDay.getDate()
+  )
+
+  function DateAddTime(date, 
+    addDay = 0, 
+    addHour = 0, 
+    addMinute = 0,
+    addYear = 0, 
+    addMonth = 0, 
+  ) {
+    const outDate = new Date(date);
+    outDate.setFullYear(outDate.getFullYear() + addYear);
+    outDate.setMonth(outDate.getMonth() + addMonth);
+    outDate.setDate(outDate.getDate() + addDay);
+    outDate.setHours(outDate.getHours() + addHour);
+    outDate.setMinutes(outDate.getMinutes() + addMinute);
+    return outDate;
+  }
+
+  const [Columns, setColumns] = useState([
+    { id:`${DateAddTime(curDay, 0)}`, title: `${longDayNames[0]}`, children: [] },
+    { id:`${DateAddTime(curDay, 1)}`, title: `${longDayNames[1]}`, children: [] },
+    { id:`${DateAddTime(curDay, 2)}`, title: `${longDayNames[2]}`, children: [] },
+    { id:`${DateAddTime(curDay, 3)}`, title: `${longDayNames[3]}`, children: [] },
+    { id:`${DateAddTime(curDay, 4)}`, title: `${longDayNames[4]}`, children: [] },
+    { id:`${DateAddTime(curDay, 5)}`, title: `${longDayNames[5]}`, children: [] },
+    { id:`${DateAddTime(curDay, 6)}`, title: `${longDayNames[6]}`, children: [] },
+  ])
+
+  useEffect(() => {
+    const fetchColumnEvents = async () => {
+      setIsLoading(true);
+      try {
+        const dayEvents = await GetCalendarEventsOnDay(curDateTime, DateAddTime(curDateTime, 7));
+        setColumnEvents(dayEvents);
+
+        Columns.map((column) => {
+          column.children = dayEvents
+            .filter((entry) => {
+              let entryDate = new Date(Date.parse(entry.startDateTime));
+              let startDate = new Date(
+                entryDate.getFullYear(),
+                entryDate.getMonth(),
+                entryDate.getDate()
+              )
+              return startDate == column.id;
+            })
+        })
+
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchColumnEvents();
+  }, []);
+
+  function DisplayJsonEvent(eventAsJson) {
+    //TODO: make this support multi-day spanning events
+    eventAsJson = eventAsJson.eventAsJson;
+
+    let startTime = new Date(eventAsJson.startDateTime).getHours() 
+      + ( new Date(eventAsJson.startDateTime).getMinutes() / 60 );
+    let endTime = new Date(eventAsJson.endDateTime).getHours() 
+      + ( new Date(eventAsJson.endDateTime).getMinutes() / 60 );
+    let timeLength = Math.abs(endTime - startTime)
+
+    if (startTime > endTime) {
+      let foo = startTime;
+      startTime = endTime;
+      endTime = foo;
+    }
+
+    return(
+      <DisplayEvent
+        key = {eventAsJson.id}
+        title={eventAsJson.title}
+        description={eventAsJson.description}
+        displayColor={eventAsJson.color}
+        start_time={startTime}
+        length_time={timeLength}
+        display_hour_scale={HOUR_SCALE_IN_PX}
+      />
+    )
+  }
+
+  let columnIndex = -1;
+  return (
+    <div className="calendar-display">
+      <CalendarDisplayColumns style={{ "--column-size": `${columnSize}%`, "--hour-size":`${HOUR_SCALE_IN_PX}px` }}>
+        {Columns.map((column) => {
+          columnIndex++;
+          return (
+            <DisplayEventColumn key={column.id} day_name={longDayNames[columnIndex]}>
+              {isLoading ? (
+                <h1>loading</h1>
+              ):(
+                column.children.map((columnEvent) => {
+                  return(
+                    <DisplayJsonEvent eventAsJson={columnEvent} key={columnEvent.id}/>
+                  )
+                })
+              )}
+            </DisplayEventColumn>
+          );
+        })}
+      </CalendarDisplayColumns>
+    </div>
+  )
+}
+
+function CalendarDisplayColumns({
   children, style}) {
   return (
     <div className="calendar-display-wiget">
@@ -117,7 +200,7 @@ function DisplayEventColumn({
   )
 }
 
-function DisplayEvent({ 
+function DisplayEvent({
   title = "event title", 
   displayColor = "var(--color-blue)", 
   description = "desc", 
@@ -127,16 +210,15 @@ function DisplayEvent({
 }) {
   var y_position = start_time * display_hour_scale
   var y_size = length_time * display_hour_scale
-
+  let displayColor1 = "var(--color-blue)"
   return(
     <div className="display-event" style={{
-      'background-color': displayColor,
+      backgroundColor: displayColor,
       top: `${y_position}px`,
-      height: `${y_size}px`,
+      height: `calc(${y_size}px - var(--container-padding-sm) * 2)`, // the padding needs to be removed
       }}>
       <div className="calendar-item-title">{title}</div>
       <div className="calendar-item-description">{description}</div>
     </div>
   )
 }
-
