@@ -24,17 +24,17 @@ export default function Dashboard({
                 Calendar: 
                     <>
                     <Calendar/>,
-                    {() => setIcludeSidebarButton( true )}
+                    {/* {() => setIcludeSidebarButton( true )} */}
                     
                     </>,
                 Messages: 
                     <>
                     <Messages/>
-                    {() => setIcludeSidebarButton(true)}
+                    {/* {() => setIcludeSidebarButton(true)} */}
                     </>,
                 JiraBoard: 
                     <div className="main-window">
-                        {() => setIcludeSidebarButton(false)}
+                        {/* {() => setIcludeSidebarButton(false)} */}
                         <SomethingWentWrong errorTitle="This page has not been finished" errorMessage="The Jira Board page is still being worked on :/"/>
                     </div>,
                 }[currentScreen] || <SomethingWentWrong/>
