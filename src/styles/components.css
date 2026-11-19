@@ -19,6 +19,21 @@
   background-color: var(--color-surface);
 }
 
+.floating-container {
+  position:absolute;
+  box-sizing: border-box;
+
+  left: var(--position-left);
+  right: var(--position-right);
+  top: var(--position-top);
+  bottom: var(--position-bottom);
+  top: var(--position-top);
+  width: var(--size-x);
+  height: var(--size-y);
+
+  z-index: var(--z-floating-mid-1);
+}
+
 /* to un-style the <Link> components */
 .unstyled-link {
   color: inherit;

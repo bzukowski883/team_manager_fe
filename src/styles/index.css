@@ -6,6 +6,8 @@ html, body {
 
   background-color: var(--color-bg);
 
+  color-scheme: dark;
+
   /* Stops the content from overflowing on mobile */
   overflow-x: hidden;
   overflow-y: hidden;

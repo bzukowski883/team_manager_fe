@@ -75,4 +75,12 @@
   --container-gap-lg:   8px;
   
 
+  /* Z-index values */
+  --z-floating-top: 10;
+  --z-floating-mid-3: 8;
+  --z-floating-mid-2: 6;
+  --z-floating-mid-1: 4;
+  --z-floating-mid: 2;
+  --z-default: 0;
+
 }
