@@ -98,3 +98,101 @@
   text-overflow: ellipsis;
 }
 
+.create-event-form {
+  display: flex;
+  flex-direction: column;
+}
+.create-event-form h1 {
+  margin: var(--container-padding-sm);
+  text-align: center;
+  font-family: var(--font-display);
+}
+.create-event-form-item {
+  background-color: transparent;
+  color: var(--color-text);
+
+  margin: var(--container-padding-base);
+  
+  font-size: var(--text-base);
+  font-family: var(--font-display);
+
+  border-radius: 0px;
+  border-width: 0px;
+  border-bottom-width: var(--border-width-sm);
+  border-style: solid;
+  border-color: transparent;
+}
+.create-event-form-item:hover {
+  border-color: var(--color-border);
+}
+.create-event-form-item-description {
+  background-color: transparent;
+  color: var(--color-text);
+
+  margin: var(--container-padding-base);
+  
+  font-size: var(--text-base);
+  font-family: var(--font-body);
+  
+  border-radius: 0px;
+  border-width: 0px;
+  border-bottom-width: var(--border-width-sm);
+  border-style: solid;
+  border-color: transparent;
+
+  resize: vertical;
+}
+.create-event-form-item-description:hover {
+  border-color: var(--color-border);
+}
+.create-event-form-color-dropdown {
+  /* background-color: transparent; */
+  background-color: var(--color-surface-2);
+  border-radius: var(--corner-radius-md) !important;
+  color:var(--color-text);
+}
+.create-event-form-item-row {
+  border-style: solid;
+  border-width: var(--border-width-sm);
+  border-radius: var(--corner-radius-md);
+  border-color: transparent;
+}
+.create-event-form-time {
+  background-color: transparent;
+
+  padding: var(--container-padding-sm);
+  margin: var(--container-padding-sm);
+  
+  border-style: solid;
+  border-width: var(--border-width-sm);
+  border-radius: var(--corner-radius-md);
+  
+  border-color: transparent;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--text-base);
+}
+.create-event-form-time input {
+  color: var(--color-text);
+}
+.create-event-form-time:hover {
+  border-color: var(--color-border);
+}
+.create-event-form-submit-button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+
+  font-size: var(--text-base);
+
+  padding: var(--container-padding-sm);
+
+  border-radius: 500px;
+  border-width: 0;
+}
+.create-event-form-submit-button:hover {
+  background-color: var(--color-primary-hover);
+}
+.create-event-form-submit-button:active {
+  background-color: var(--color-primary-active);
+}

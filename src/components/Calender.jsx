@@ -6,6 +6,7 @@ import { getExampleZero, GetCalendarEventsOnDay} from "../services/calendarservi
 import { useEffect, useState } from "react"
 import SomethingWentWrong from "./Error"
 import Sidebar from "./Sidebar";
+import CreateEventBox from "./CalEventCreation.jsx"
 
 export default function Calendar() {
   const [buttonText, setButtonText] = useState("Do something with the server!");
@@ -37,6 +38,7 @@ export default function Calendar() {
         <div>etc...</div>
       </Sidebar>
       <CalendarWeekDisplay curDateTime={curDateTime} numOfColumns={NUM_OF_COLUMNS} HOUR_SCALE_IN_PX={HOUR_SCALE_IN_PX}/>
+      <CreateEventBox sizeX="500px"/>
       {/* <button onClick={handleClick}>{buttonText}</button> */}
     </div>
   )
