@@ -12,18 +12,33 @@ export default function CreateEventBox({
   sizeX = 'fit-content', 
   sizeY = `fit-content`,
 }) {
-  const [newEventColor, setNewEventColor] = useState("var(--color-text)");
+  const [newEventData, setNewEventData] = useState({
+    title: '',
+    description: '',
+    color: "var(--color-blue)",
+    startDate: new Date(),
+    startTime: new Date(),
+    // endDate: new Date(),
+    endTime: new Date(),
+  })
 
   function handelSubmit(e) {
     e.preventDefault(); // Prevent the browser from reloading the page
 
-    console.log(`Create new event `)
-  }
+    // TODO: maybe combine the dates and times? not sure, this is nicer so maybe just use seperated values
 
-  const handelColorChange = (e) => {
-    console.log(`handelColorChange:`, e.target.value)
-    setNewEventColor(e.target.value)
-  }
+    console.log(`Create new event`, newEventData)
+  };
+
+
+  const handelChange = (e) => {
+    const { name, value } = e.target
+    console.log(`handelChange[`, name, `]:`, value)
+    setNewEventData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   return (
     <div className="floating-container" style={{
@@ -37,15 +52,32 @@ export default function CreateEventBox({
       <div className="box-container">
         <form onSubmit={handelSubmit} className="create-event-form">
           <h1>Create Event</h1>
-          <input name="title" placeholder="Add Title" className="create-event-form-item"/>
-          <textarea name="description" placeholder="Add description" className="create-event-form-item-description"/>
-          <ColorChoices onChange={handelColorChange} style={{ "border-color":newEventColor, }} />
+          <input 
+            id="title" 
+            name="title"
+            required 
+            placeholder="Add Title" 
+            className="create-event-form-item"
+            onChange={handelChange}
+          />
+          <textarea 
+            id="description"
+            name="description" 
+            placeholder="Add description" 
+            className="create-event-form-item-description"
+            onChange={handelChange}
+          />
+          <ColorChoices 
+            name="color"
+            onChange={handelChange} 
+            style={{ "borderColor":newEventData.color, }} 
+          />
           <div className="create-event-form-item-row">
-            <input type="date" name="startDate" className="create-event-form-time"/>
+            <input name="startDate" type="date" required className="create-event-form-time" onChange={handelChange}/>
             :
-            <input type="time" name="startTime" className="create-event-form-time"/>
+            <input name="startTime" type="time" required className="create-event-form-time" onChange={handelChange}/>
             to
-            <input type="time" name="endTime" className="create-event-form-time"/>
+            <input name="endTime" type="time" required className="create-event-form-time" onChange={handelChange}/>
           </div>
           <button type="submit" className="create-event-form-submit-button">+ Create event</button>
         </form>
@@ -54,7 +86,7 @@ export default function CreateEventBox({
   )
 }
 
-function ColorChoices({style, onChange}) {
+function ColorChoices({style, onChange, name, }) {
   
   const options = [
     { value: "var(--color-blue)",       label: "Blue" },
@@ -71,7 +103,7 @@ function ColorChoices({style, onChange}) {
   ]
 
   return (
-    <select onChange={onChange} style={style} className="create-event-form-color-dropdown">
+    <select name={name} onChange={onChange} style={style} className="create-event-form-color-dropdown">
       {options.map((colorOption) => (
         <option key={colorOption.label} value={colorOption.value} style={{ 
           color:colorOption.value
