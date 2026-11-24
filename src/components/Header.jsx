@@ -35,7 +35,7 @@ function Header({
           {IncludeNavBar ?
           // shows nav buttons
             navPages.map((navPage, index) => (
-              <Link className="unstyled-link" to={"./../" + navPage}>
+              <Link className="unstyled-link" to={"./../" + navPage} key={navPage}>
                 <button className={currentScreen == navPage ? "header-nav-button-active" : "header-nav-button"}>
                   {navPage}
                 </button>
